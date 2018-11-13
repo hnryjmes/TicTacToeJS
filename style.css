@@ -1,5 +1,5 @@
 body {
-  font-family: monospace;
+  font-family: "Futura", sans-serif;
 }
 
 td {
@@ -8,7 +8,6 @@ td {
   width: 100px;
   cursor: pointer;
   font-size: 70px;
-  font-family: "Futura", sans-serif;
   text-align: center;
   vertical-align: middle;
 }
@@ -51,7 +50,8 @@ table tr td:last-child {
   display: none;
   top: 140px;
   width: 200px;
-  background-color: rgba(204, 153, 255, 0.8);
+  /* background-color: rgba(204, 153, 255, 0.8); */
+  background-color: rgba(128, 128, 128, 0.8);
   position: absolute;
   left: 205px;
   margin-left: -100px;
