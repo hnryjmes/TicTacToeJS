@@ -39,20 +39,27 @@ function turn(squareId, player) {
 }
 
 function checkWin(board, player) {
-  var plays = board.reduce(function(accumulator, currentValue, currentIndex) {
-    if (currentValue === player) {
-      accumulator.concat(currentIndex);
-    }
+  var plays = board.reduce(function(a,e,i) {
+    return (e === player) ? a.concat(i) : a;
   }, []);
   var gameWon = null;
   winningCombos.forEach(function(win, index) {
     if (!gameWon) {
-      if (win.every(function(e) {
-        plays.indexOf(e > -1);
+      if (win.every(function(elem) {
+        return plays.indexOf(elem) > -1;
       })) {
         gameWon = {index: index, player: player};
       }
     }
   });
   return gameWon;
+}
+
+function gameOver(gameWon) {
+  winningCombos[gameWon.index].forEach(function(index) {
+    document.getElementById(index).style.backgroundColor = gameWon.player == humanPlayer ? "blue" : "red";
+  });
+  for (var i = 0; i < cells.length; i++) {
+    cells[i].removeEventListener('click', turnClick, false);
+  }
 }
