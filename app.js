@@ -26,5 +26,33 @@ function startGame() {
 }
 
 function turnClick(square) {
-  console.log(square.target.id);
+  turn(square.target.id, humanPlayer);
+}
+
+function turn(squareId, player) {
+  originalBoard[squareId] = player;
+  document.getElementById(squareId).innerText = player;
+  var gameWon = checkWin(originalBoard, player);
+  if (gameWon) {
+    gameOver(gameWon);
+  }
+}
+
+function checkWin(board, player) {
+  var plays = board.reduce(function(accumulator, currentValue, currentIndex) {
+    if (currentValue === player) {
+      accumulator.concat(currentIndex);
+    }
+  }, []);
+  var gameWon = null;
+  winningCombos.forEach(function(win, index) {
+    if (!gameWon) {
+      if (win.every(function(e) {
+        plays.indexOf(e > -1);
+      })) {
+        gameWon = {index: index, player: player};
+      }
+    }
+  });
+  return gameWon;
 }
