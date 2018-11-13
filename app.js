@@ -57,7 +57,7 @@ function checkWin(board, player) {
 
 function gameOver(gameWon) {
   winningCombos[gameWon.index].forEach(function(index) {
-    document.getElementById(index).style.backgroundColor = gameWon.player == humanPlayer ? "blue" : "red";
+    document.getElementById(index).style.backgroundColor = gameWon.player == humanPlayer ? "LightSteelBlue" : "LightPink";
   });
   for (var i = 0; i < cells.length; i++) {
     cells[i].removeEventListener('click', turnClick, false);
