@@ -82,7 +82,14 @@ function emptySquares() {
 }
 
 function bestSpot() {
-  return emptySquares()[0];
+  // easy mode: first empty square
+  // return emptySquares()[0];
+
+  // hard mode: random empty square
+  return emptySquares()[Math.floor(Math.random() * emptySquares().length)];
+
+  // impossible mode: minimax algorithm
+  
 }
 
 function checkTie() {
