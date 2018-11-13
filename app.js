@@ -13,6 +13,7 @@ var winningCombos = [
 ];
 
 var cells = document.querySelectorAll('.cell');
+var difficultyMode = "easy";
 startGame();
 
 function startGame() {
@@ -81,15 +82,27 @@ function emptySquares() {
   });
 }
 
+function setEasyMode() {
+  difficultyMode = "easy";
+}
+
+function setHardMode() {
+  difficultyMode = "hard";
+}
+
+function setImpossibleMode() {
+  difficultyMode = "impossible";
+}
+
 function bestSpot() {
-  // easy mode: first empty square
-  // return emptySquares()[0];
-
-  // hard mode: random empty square
-  return emptySquares()[Math.floor(Math.random() * emptySquares().length)];
-
-  // impossible mode: minimax algorithm
-  
+  switch (difficultyMode) {
+    case "easy":
+      console.log("easy");
+      return emptySquares()[0];
+    case "hard":
+      console.log("hard");
+      return emptySquares()[Math.floor(Math.random() * emptySquares().length)];
+  }
 }
 
 function checkTie() {

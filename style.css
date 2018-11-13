@@ -1,5 +1,6 @@
 body {
   font-family: "Futura", sans-serif;
+  min-width: 450px;
 }
 
 td {
@@ -44,6 +45,16 @@ table tr td:last-child {
 #controls-container {
   top: 20px;
   left: 25px;
+  width: 350px;
+}
+
+#restart-button {
+  display: inline;
+}
+
+#difficulty-buttons {
+  display: inline;
+  float: right;
 }
 
 #endgame-text {

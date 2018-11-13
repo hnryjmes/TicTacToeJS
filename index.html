@@ -26,7 +26,14 @@
       </table>
     </div>
     <div class="container" id="controls-container">
-      <button onClick="startGame()">Restart</button>
+      <div id="restart-button">
+        <button onClick="startGame()">Restart Game</button>
+      </div>
+      <div id="difficulty-buttons">
+        <button onClick="setEasyMode()">Easy</button>
+        <button onClick="setHardMode()">Hard</button>
+        <button onClick="setImpossibleMode()">Impossible</button>
+      </div>
     </div>
     <div class="endgame" id="endgame-text"></div>
     <script src="app.js"></script>
