@@ -1,0 +1,23 @@
+{
+  "name": "tictactoejs",
+  "version": "1.0.0",
+  "description": "Tic Tac Toe game in vanilla JavaScript with AI",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node node_modules/http-server/bin/http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hnryjmes/TicTacToeJS.git"
+  },
+  "author": "Henry Cooksley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hnryjmes/TicTacToeJS/issues"
+  },
+  "homepage": "https://github.com/hnryjmes/TicTacToeJS#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
