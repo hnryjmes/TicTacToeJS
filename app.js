@@ -102,6 +102,9 @@ function bestSpot() {
     case "hard":
       console.log("hard");
       return emptySquares()[Math.floor(Math.random() * emptySquares().length)];
+    case "impossible":
+      console.log("impossible");
+      return minimax(originalBoard, computerPlayer).index;
   }
 }
 
@@ -115,4 +118,55 @@ function checkTie() {
     return true;
   }
   return false;
+}
+
+function minimax(newBoard, player) {
+  var availableSpots = emptySquares(newBoard);
+
+  if (checkWin(newBoard, player)) {
+    return { score: -10 };
+  } else if (checkWin(newBoard, computerPlayer)) {
+    return { score: 20 };
+  } else if (availableSpots.length === 0) {
+    return { score: 0 };
+  }
+  var moves = [];
+  for (var i = 0; i < availableSpots.length; i++) {
+    var move = {};
+    move.index = newBoard[availableSpots[i]];
+    newBoard[availableSpots[i]] = player;
+
+    if (player == computerPlayer) {
+      var result = minimax(newBoard, humanPlayer);
+      move.score = result.score;
+    } else {
+      var result = minimax(newBoard, computerPlayer);
+      move.score = result.score;
+    }
+
+    newBoard[availableSpots[i]] = move.index;
+
+    moves.push(move);
+  }
+
+  var bestMove;
+
+  if (player === computerPlayer) {
+    var bestScore = -10000;
+    for (var i = 0; i < moves.length; i++) {
+      if (moves[i].score > bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  } else {
+    var bestScore = 10000;
+    for (var i = 0; i < moves.length; i++) {
+      if (moves[i].score < bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  }
+  return moves[bestMove];
 }
